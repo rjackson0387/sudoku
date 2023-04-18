@@ -39,7 +39,13 @@ class SudokuGenerator:
 
 	Parameters: None
 	Return: list[list]
+	
     '''
+    def print_board_test(self):
+        for row in self.board:
+            print("".join(str(cell) for cell in row))
+
+
     def get_board(self):
         return self.board
 
