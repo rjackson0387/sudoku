@@ -82,11 +82,12 @@ class SudokuGenerator:
     '''
   #aidan
     def valid_in_col(self, col, num):
-      for item in board:
+      for item in self.board:
         if item[col] == num:
           return False
         else:
           return True
+
     '''
 	Determines if num is contained in the 3x3 box specified on the board
     If num is in the specified box starting at (row_start, col_start), return False.
@@ -101,7 +102,7 @@ class SudokuGenerator:
     '''#jaz
     def valid_in_box(self, row_start, col_start, num):
         for i in range(row_start, col_start), (row_start+2, col_start+2):
-            if i == SudokuGenerator.board_list[num]:
+            if i == self.board[num]:
                 return False
             else:
                 return True
@@ -137,11 +138,10 @@ class SudokuGenerator:
     '''
     def fill_box(self, row_start, col_start):
         num = 0 
-        for i in range(self.)
-          for j in range (self.)
+        for i in range(row_start):
+          for j in range (col_start):
             while True:
-              num = self.random generator(self.)
-                if self.
+              pass
     
     '''
     Fills the three boxes along the main diagonal of the board
