@@ -1,10 +1,5 @@
 import math, random
 
-board = [[0 for j in range(9)] for i in range(9)]
-for row in board:
-  for col in row:
-    print(col, end='')
-  
 
 """
 This was adapted from a GeeksforGeeks article "Program for Sudoku Generator" by Aarti_Rathi and Ankur Trisal
@@ -46,7 +41,7 @@ class SudokuGenerator:
 	Return: list[list]
     '''
     def get_board(self):
-        return list[board]
+        return self.board
 
     '''
 	Displays the board to the console
@@ -59,13 +54,13 @@ class SudokuGenerator:
     def print_board(self):
         
     '''
-	Determines if num is contained in the specified row (horizontal) of the board
+    Determines if num is contained in the specified row (horizontal) of the board
     If num is already in the specified row, return False. Otherwise, return True
 
-	Parameters:
-	row is the index of the row we are checking
-	num is the value we are looking for in the row
-	
+    Parameters:
+    row is the index of the row we are checking
+    num is the value we are looking for in the row
+
 	Return: boolean
     '''
     def valid_in_row(self, row, num):
@@ -146,6 +141,8 @@ class SudokuGenerator:
             while True:
               num = self.random generator(self.)
                 if self.
+
+
     
     '''
     Fills the three boxes along the main diagonal of the board
