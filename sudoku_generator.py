@@ -2,8 +2,9 @@ import math, random
 
 board = [[0 for j in range(9)] for i in range(9)]
 for row in board:
-  for col in row:
-    print(col, end='')
+    for col in row:
+        print(col, end=' ')
+    print()
   
 
 """
@@ -141,12 +142,13 @@ class SudokuGenerator:
 	Return: None
     '''
     def fill_box(self, row_start, col_start):
+        pass
         num = 0 
-        for i in range(self.)
-          for j in range (self.)
-            while True:
-              num = self.random generator(self.)
-                if self.
+        #for i in range(self.)
+          #for j in range (self.)
+            #while True:
+              #num = self.random generator(self.)
+                #if self.
     
     '''
     Fills the three boxes along the main diagonal of the board
