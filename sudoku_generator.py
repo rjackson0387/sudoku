@@ -57,6 +57,7 @@ class SudokuGenerator:
     '''
   #mya
     def print_board(self):
+        pass
         
     '''
 	Determines if num is contained in the specified row (horizontal) of the board
