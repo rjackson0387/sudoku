@@ -1,10 +1,5 @@
 import math, random
 
-board = [[0 for j in range(9)] for i in range(9)]
-for row in board:
-  for col in row:
-    print(col, end='')
-  
 
 """
 This was adapted from a GeeksforGeeks article "Program for Sudoku Generator" by Aarti_Rathi and Ankur Trisal
