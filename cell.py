@@ -13,5 +13,6 @@ class Cell:
     self.sketched_value = value 
   
   def draw(self):
+    pass
     
   
