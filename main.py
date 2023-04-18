@@ -1,5 +1,5 @@
-import sudoku_generator
+from sudoku_generator import SudokuGenerator
 
-board = sudoku_generator.SudokuGenerator(0)
-board.print_board()
+board = SudokuGenerator(0)
+SudokuGenerator.print_board(board)
 # board[0][1] = 1
