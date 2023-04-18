@@ -34,6 +34,8 @@ class SudokuGenerator:
     def __init__(self, removed_cells, row_length=9):
         self.removed_cells = removed_cells
         self.row_length = row_length
+        self.board = [[0 for j in range(row_length)] for i in range(row_length)]
+        self.box_length = int(math.sqrt(row_length))
 
 
 
@@ -44,7 +46,7 @@ class SudokuGenerator:
 	Return: list[list]
     '''
     def get_board(self):
-        return SudokuGenerator.board_list
+        return list[board]
 
     '''
 	Displays the board to the console
