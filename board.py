@@ -8,7 +8,6 @@ class Board:
     
   def draw(self):
     pass
-
   def select(self,row, col):
     pass 
   def click(self, x, y):
