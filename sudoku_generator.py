@@ -34,8 +34,6 @@ class SudokuGenerator:
         self.board = [[0 for j in range(row_length)] for i in range(row_length)]
         self.box_length = int(math.sqrt(row_length))
 
-
-
     '''
 	Returns a 2D python list of numbers which represents the board
 
@@ -250,9 +248,10 @@ class SudokuGenerator:
         while i < x:
             row = random.randint(0, 8)
             col = random.randint(0, 8)
-            if self.board[row][col] != 0:
+            if self.board[row][col] != 0: #if statement is not being reached
                 self.board[row][col] = 0
                 i += 1
+                break
             else:
                 continue
 
