@@ -82,11 +82,10 @@ class SudokuGenerator:
     '''
   #aidan
     def valid_in_col(self, col, num):
-      for item in self.board:
-        if item[col] == num:
-          return False
-        else:
-          return True
+        for item in self.board:
+            if item[col] == num:
+                return False
+        return True
 
     '''
 	Determines if num is contained in the 3x3 box specified on the board
@@ -227,8 +226,8 @@ class SudokuGenerator:
 	Return: None
     '''
 
-    def remove_cells(self):
-        for cell in cells:
+    #def remove_cells(self):
+        #for cell in cells:
 
 
 '''
