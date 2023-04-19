@@ -26,7 +26,9 @@ class SudokuGenerator:
 	Return:
 	None
     '''
-    def __init__(self, removed_cells, row_length=9):
+
+    # row length doesnt need default, switching parameters
+    def __init__(self, row_length, removed_cells):
         self.removed_cells = removed_cells
         self.row_length = row_length
         self.board = [[0 for j in range(row_length)] for i in range(row_length)]
@@ -41,7 +43,8 @@ class SudokuGenerator:
 	Return: list[list]
     '''
     def get_board(self):
-        return list[self.board]
+        return list(self.board)
+
 
     '''
 	Displays the board to the console
@@ -100,17 +103,17 @@ class SudokuGenerator:
 	Return: boolean
     '''#jaz
     def valid_in_box(self, row_start, col_start, num):
-        if 0 < row_start < 3:
+        if 0 < row_start <= 3:
             row_start = 0
-        elif 3 < row_start < 6:
+        elif 3 < row_start <= 6:
             row_start = 3
-        elif 6 < row_start < 9:
+        elif 6 < row_start <= 9:
             row_start = 6
-        if 0 < col_start < 3:
+        if 0 < col_start <= 3:
             col_start = 0
-        elif 3 < col_start < 6:
+        elif 3 < col_start <= 6:
             col_start = 3
-        elif 6 < col_start < 9:
+        elif 6 < col_start <= 9:
             col_start = 6
         for i in range(row_start, row_start+3):
             for j in range(col_start, col_start+3):
@@ -204,14 +207,16 @@ class SudokuGenerator:
                 col = 0
                 if row >= self.row_length:
                     return True
-        
+
+        # something about the structure must change so that column start is not 10 -- adding 1 when it is 9
         for num in range(1, self.row_length + 1):
-            if self.is_valid(row, col, num):
-                self.board[row][col] = num
-                if self.fill_remaining(row, col + 1):
-                    return True
-                self.board[row][col] = 0
-        return False
+            if col < 9:
+                if self.is_valid(row, col, num):
+                    self.board[row][col] = num
+                    if self.fill_remaining(row, col + 1):
+                        return True
+                    self.board[row][col] = 0
+            return False
 
     '''
     DO NOT CHANGE
@@ -221,6 +226,7 @@ class SudokuGenerator:
 	Parameters: None
 	Return: None
     '''
+    # adding 0's into fill values instead of having numbers 1-9, need a parameter for it to look for values other than 0
     def fill_values(self):
         self.fill_diagonal()
         self.fill_remaining(0, self.box_length)
@@ -270,6 +276,7 @@ def generate_sudoku(size, removed):
     sudoku = SudokuGenerator(size, removed)
     sudoku.fill_values()
     board = sudoku.get_board()
+    print(board)
     sudoku.remove_cells()
     board = sudoku.get_board()
     return board
