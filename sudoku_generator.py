@@ -188,6 +188,7 @@ class SudokuGenerator:
 	Return:
 	boolean (whether or not we could solve the board)
     '''
+
     def fill_remaining(self, row, col):
         if (col >= self.row_length and row < self.row_length - 1):
             row += 1
@@ -207,15 +208,13 @@ class SudokuGenerator:
                 if row >= self.row_length:
                     return True
 
-        # something about the structure must change so that column start is not 10 -- adding 1 when it is 9
         for num in range(1, self.row_length + 1):
-            if col < 9:
-                if self.is_valid(row, col, num):
-                    self.board[row][col] = num
-                    if self.fill_remaining(row, col + 1):
-                        return True
-                    self.board[row][col] = 0
-            return False
+            if self.is_valid(row, col, num):
+                self.board[row][col] = num
+                if self.fill_remaining(row, col + 1):
+                    return True
+                self.board[row][col] = 0
+        return False
 
     '''
     DO NOT CHANGE
