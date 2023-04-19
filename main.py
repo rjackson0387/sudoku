@@ -1,7 +1,8 @@
 import sudoku_generator
 from sudoku_generator import SudokuGenerator
 import random
-'''board = SudokuGenerator(5)
+board = SudokuGenerator(9, 0)
+'''
 SudokuGenerator.print_board(board)
 # board[0][1] = 1
 
@@ -17,5 +18,5 @@ print()
 board.remove_cells()
 SudokuGenerator.print_board(board)
 '''
-board = sudoku_generator.generate_sudoku(9, 30)
-print(board)
+SudokuGenerator.print_board(board)
+
