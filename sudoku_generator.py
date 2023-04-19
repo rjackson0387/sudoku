@@ -138,13 +138,13 @@ class SudokuGenerator:
 	Return: None
     '''
     def fill_box(self, row_start, col_start):
-        numbers_used = []
+        numbers_used = set()
         for i in range(row_start, row_start + 3):
             for j in range(col_start, col_start + 3):
                 while True:
                     number = random.randint(1, 9)
                     if number not in numbers_used:
-                        numbers_used.append(number)
+                        numbers_used.add(number)
                         break
                 self.board[i][j] = number
         #num = 0
@@ -162,11 +162,8 @@ class SudokuGenerator:
     '''
   #aidan
     def fill_diagonal(self):
-        self.fill_box(0,0)
-        self.fill_box(3,3)
-        self.fill_box(6,6)
     
-    '''
+      '''
     DO NOT CHANGE
     Provided for students
     Fills the remaining cells of the board
