@@ -65,7 +65,7 @@ class SudokuGenerator:
 	Return: boolean
     '''
     def valid_in_row(self, row, num):
-        if num in self.board[row]:
+        if num in row:
             return False
         else:
             return True
@@ -101,11 +101,13 @@ class SudokuGenerator:
 	Return: boolean
     '''#jaz
     def valid_in_box(self, row_start, col_start, num):
-        for i in range(row_start, col_start), (row_start+2, col_start+2):
-            if i == self.board[num]:
-                return False
-            else:
-                return True
+
+        for i in range(row_start, row_start+3):
+            for j in range(col_start, col_start+3):
+                if self.board[i][j] == num:
+                    return False
+                else:
+                    return True
 
 
     
@@ -146,12 +148,7 @@ class SudokuGenerator:
                         numbers_used.add(number)
                         break
                 self.board[i][j] = number
-        #num = 0
-        #for i in range(row_start):
-          #for j in range (col_start):
-            #while True:
-              #pass
-    
+
     '''
     Fills the three boxes along the main diagonal of the board
     These are the boxes which start at (0,0), (3,3), and (6,6)
@@ -160,14 +157,10 @@ class SudokuGenerator:
 	Return: None
     '''
   #aidan
-    '''def fill_diagonal(self):
-        index = 0
-        for row in board:
-            temp_nums = []
-            for item in range(3):
-                num_to_insert = random.randint(1,9)
-                if num_to_insert not in temp_nums:
-                    board[row][index] ='''
+    def fill_diagonal(self):
+        self.fill_box(0, 0)
+        self.fill_box(3, 3)
+        self.fill_box(6, 6)
     '''
     DO NOT CHANGE
     Provided for students
