@@ -251,7 +251,6 @@ class SudokuGenerator:
             if self.board[row][col] != 0: #if statement is not being reached
                 self.board[row][col] = 0
                 i += 1
-                break
             else:
                 continue
 
