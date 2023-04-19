@@ -238,8 +238,21 @@ class SudokuGenerator:
 	Return: None
     '''
 
-    #def remove_cells(self):
-        #for cell in cells:
+    def remove_cells(self):
+        x = self.removed_cells
+        i = 0
+        while i < x:
+            row = random.randint(0, 8)
+            col = random.randint(0, 8)
+            if self.board[row][col] != 0:
+                self.board[row][col] = 0
+                i += 1
+            else:
+                continue
+
+
+
+
 
 
 '''
