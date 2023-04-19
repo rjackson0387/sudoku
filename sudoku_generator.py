@@ -65,7 +65,7 @@ class SudokuGenerator:
 	Return: boolean
     '''
     def valid_in_row(self, row, num):
-        if num in row:
+        if num in self.board[row]:
             return False
         else:
             return True
@@ -137,11 +137,20 @@ class SudokuGenerator:
 	Return: None
     '''
     def fill_box(self, row_start, col_start):
-        num = 0 
-        for i in range(row_start):
-          for j in range (col_start):
-            while True:
-              pass
+        numbers_used = set()
+        for i in range(row_start, row_start + 3):
+            for j in range(col_start, col_start + 3):
+                while True:
+                    number = random.randint(1, 9)
+                    if number not in numbers_used:
+                        numbers_used.add(number)
+                        break
+                self.board[i][j] = number
+        #num = 0
+        #for i in range(row_start):
+          #for j in range (col_start):
+            #while True:
+              #pass
     
     '''
     Fills the three boxes along the main diagonal of the board
@@ -151,9 +160,15 @@ class SudokuGenerator:
 	Return: None
     '''
   #aidan
-    def fill_diagonal(self):
-    
-      '''
+    '''def fill_diagonal(self):
+        index = 0
+        for row in board:
+            temp_nums = []
+            for item in range(3):
+                num_to_insert = random.randint(1,9)
+                if num_to_insert not in temp_nums:
+                    board[row][index] ='''
+    '''
     DO NOT CHANGE
     Provided for students
     Fills the remaining cells of the board
