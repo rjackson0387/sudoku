@@ -157,15 +157,12 @@ class SudokuGenerator:
 	Parameters: None
 	Return: None
     '''
-  #aidan
-    '''def fill_diagonal(self):
-        index = 0
-        for row in board:
-            temp_nums = []
-            for item in range(3):
-                num_to_insert = random.randint(1,9)
-                if num_to_insert not in temp_nums:
-                    board[row][index] ='''
+
+    def fill_diagonal(self):
+        self.fill_box(0, 0)
+        self.fill_box(3, 3)
+        self.fill_box(6, 6)
+
     '''
     DO NOT CHANGE
     Provided for students
