@@ -1,3 +1,4 @@
+import pygame, sys
 from sudoku_generator import SudokuGenerator
 
 board = SudokuGenerator(5)
@@ -13,3 +14,16 @@ print()
 
 board.remove_cells()
 SudokuGenerator.print_board(board)
+
+pygame.init()
+pygame.display.set_caption("Sudoku")
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+
+while True:
+    # event handler
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+    pygame.display.update()  # updates screen when overlayign objects on screen
