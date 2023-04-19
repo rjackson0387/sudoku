@@ -228,7 +228,15 @@ class SudokuGenerator:
     '''
 
     def remove_cells(self):
-        for cell in cells:
+        rowx = []
+        rowy = []
+        for i in range:
+            x = random.randint(0, x-1)
+            y = random.randint(0, y-1)
+            rowx.append(x)
+            rowy.append(y)
+            board[x][y] = random
+
 
 
 '''
