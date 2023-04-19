@@ -251,10 +251,6 @@ class SudokuGenerator:
                 continue
 
 
-
-
-
-
 '''
 DO NOT CHANGE
 Provided for students
