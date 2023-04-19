@@ -248,9 +248,10 @@ class SudokuGenerator:
         while i < x:
             row = random.randint(0, 8)
             col = random.randint(0, 8)
-            if self.board[row][col] != 0:
+            if self.board[row][col] != 0: #if statement is not being reached
                 self.board[row][col] = 0
                 i += 1
+                break
             else:
                 continue
 
