@@ -114,7 +114,6 @@ class SudokuGenerator:
             col_start = 6
         for i in range(row_start, row_start+3):
             for j in range(col_start, col_start+3):
-                print(j)
                 if self.board[i][j] == num:
                     return False
         return True
