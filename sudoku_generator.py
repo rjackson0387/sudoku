@@ -102,11 +102,13 @@ class SudokuGenerator:
 	Return: boolean
     '''#jaz
     def valid_in_box(self, row_start, col_start, num):
-        for i in range(row_start, col_start), (row_start+2, col_start+2):
-            if i == self.board[num]:
-                return False
-            else:
-                return True
+        for i in range(row_start, row_start+2):
+            for j in range(col_start, col_start+2):
+
+                if self.board[i][j] == num:
+                    return False
+                else:
+                    return True
 
 
     
