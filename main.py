@@ -17,5 +17,5 @@ print()
 board.remove_cells()
 SudokuGenerator.print_board(board)
 '''
-board = sudoku_generator.generate_sudoku(9, 30)
+board = sudoku_generator.generate_sudoku(9.30)
 print(board)
