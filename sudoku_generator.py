@@ -138,11 +138,20 @@ class SudokuGenerator:
 	Return: None
     '''
     def fill_box(self, row_start, col_start):
-        num = 0 
-        for i in range(row_start):
-          for j in range (col_start):
-            while True:
-              pass
+        numbers_used = set()
+        for i in range(row_start, row_start + 3):
+            for j in range(col_start, col_start + 3):
+                while True:
+                    number = random.randint(1, 9)
+                    if number not in numbers_used:
+                        numbers_used.add(number)
+                        break
+                self.board[i][j] = number
+        #num = 0
+        #for i in range(row_start):
+          #for j in range (col_start):
+            #while True:
+              #pass
     
     '''
     Fills the three boxes along the main diagonal of the board
