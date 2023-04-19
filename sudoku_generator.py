@@ -100,6 +100,7 @@ class SudokuGenerator:
 
 	Return: boolean
     '''#jaz
+    # Check valid in box
     def valid_in_box(self, row_start, col_start, num):
         if 0 <= row_start < 3:
             row_start = 0
