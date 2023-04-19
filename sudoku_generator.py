@@ -228,21 +228,8 @@ class SudokuGenerator:
     '''
 
     def remove_cells(self):
-        cells = []
-        for i in range(9):
-            for j in range(9):
-                cells.append((i, j, self.board[i][j]))
         for cell in cells:
-            i, j, value = cell
-            if value == 0:
-                continue
-            self.board[i][j] = 0
-            correct = self.count_correct()
-            if correct > 1:
-                self.board[i][j] = value
-            cells -= 1
-            if cells == 0:
-                break
+
 
 '''
 DO NOT CHANGE
