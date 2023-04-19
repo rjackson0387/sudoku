@@ -54,7 +54,6 @@ class SudokuGenerator:
     def print_board(self):
         for i in self.board:
             print(i)
-        
     '''
 	Determines if num is contained in the specified row (horizontal) of the board
     If num is already in the specified row, return False. Otherwise, return True
