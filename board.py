@@ -5,7 +5,7 @@ import sys
 
 pygame.init()
 pygame.display.set_caption('Sudoku')
-screen = pygame.display.set_mode((WIDTH, HEIGHT)) #(453, 453) makes it around the actual parts of the board
+screen = pygame.display.set_mode((WIDTH, HEIGHT))   # (453, 453) makes it around the actual parts of the board
 board_surface = pygame.Surface((WIDTH, HEIGHT))
 screen.fill((191, 239, 255))
 board_surface.fill((202, 225, 255))
@@ -28,10 +28,20 @@ class Board:
               pygame.draw.rect(board_surface, (96,123,139), (x, y, Board.CELL_SIZE, Board.CELL_SIZE), 1)
       for i in range(10):
           if i % 3 == 0:
-              pygame.draw.line(board_surface, (96, 123, 139), (0, i* Board.CELL_SIZE), (WIDTH, i * Board.CELL_SIZE), 4)
+              pygame.draw.line(board_surface, (96, 123, 139), (0, i * Board.CELL_SIZE), (WIDTH, i * Board.CELL_SIZE), 4)
               pygame.draw.line(board_surface, (96, 123, 139), (i * Board.CELL_SIZE, 0), (i * Board.CELL_SIZE, WIDTH), 4)
       screen.blit(board_surface, (0, 0))
+      left_button_rect = pygame.Rect(200, 500, 120, 70)
+      middle_button_rect = pygame.Rect(400, 500, 120, 70)
+      right_button_rect = pygame.Rect(600, 500, 120, 70)
+
+      font = pygame.font.Font(None, 36)
+      left_text = font.render('BABY', True, (0, 0, 0))
+      middle_text = font.render('MEDIUM', True, (0, 0, 0))
+      right_text = font.render('HARD', True, (0, 0, 0))
+
       pygame.display.update()
+
 
 
 
