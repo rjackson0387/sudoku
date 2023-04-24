@@ -1,4 +1,6 @@
 import pygame
+
+import cell
 from constants import *
 import sudoku_generator
 import random
@@ -94,13 +96,14 @@ for item in Cell.objects:
     item.draw(item.screen)
 
 while True:
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             print(event.pos)
-            coords = pygame.mouse.get_pos()
+            coords = event.pos
             if exitbutton(coords):
                 pygame.quit()
                 sys.exit()
@@ -108,6 +111,7 @@ while True:
                 start_screen()
                 break
             selected_cell = board.Board.click(sudoku, *coords)
+            cell.red_box(*coords)
             if selected_cell:
                 board.Board.select(sudoku, *selected_cell)
         elif event.type == pygame.KEYDOWN:

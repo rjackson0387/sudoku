@@ -86,11 +86,13 @@ class Board:
 
   def select(self,row, col):
     self.selected_cell = (row, col)
-    cell.red_box(row, col)
+    pygame.display.update()
 
 
 
   def click(self, x, y):
+    selected_cell = None
+
     cell_width = self.width // 9
     cell_height = self.height // 9
     row = y // cell_height
