@@ -81,48 +81,53 @@ def start_screen():
                 elif right_button_rect.collidepoint(event.pos):
                     return 50
 
-difficulty = start_screen()
-
-game_board = sudoku_generator.generate_sudoku(9, difficulty)
-
-for row, list in enumerate(game_board):
-    for col, item in enumerate(list):
-        Cell(item, row, col, 50, 50, board.screen)
-
-sudoku = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
-sudoku.draw()
-
-for item in Cell.objects:
-    item.draw(item.screen)
-
 while True:
+    difficulty = start_screen()
+    restart_key = 0
+    game_board = sudoku_generator.generate_sudoku(9, difficulty)
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            print(event.pos)
-            coords = event.pos
-            if exitbutton(coords):
+    for row, list in enumerate(game_board):
+        for col, item in enumerate(list):
+            Cell(item, row, col, 50, 50, board.screen)
+
+    sudoku = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
+    sudoku.draw()
+
+    for item in Cell.objects:
+        item.draw(item.screen)
+
+    while True:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            if restartbutton(coords):
-                start_screen()
-                break
-            selected_cell = board.Board.click(sudoku, *coords)
-            cell.red_box(*coords)
-            if selected_cell:
-                board.Board.select(sudoku, *selected_cell)
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_1 <= event.key <= pygame.K_9:
-                number_input = event.key - pygame.K_0
-                for cell in Cell.objects:
-                    if cell.selected:
-                        cell.sketch(number_input)
-            elif event.key == pygame.K_BACKSPACE:
-                for cell in Cell.objects:
-                    if cell.selected:
-                        board.Board.clear(cell)
-
-    pygame.display.update()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                print(event.pos)
+                coords = event.pos
+                if exitbutton(coords):
+                    pygame.quit()
+                    sys.exit()
+                if restartbutton(coords):
+                    start_screen()
+                    restart_key = 1
+                    break
+                selected_cell = board.Board.click(sudoku, *coords)
+                cell.red_box(*coords)
+                if selected_cell:
+                    board.Board.select(sudoku, *selected_cell)
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_1 <= event.key <= pygame.K_9:
+                    number_input = event.key - pygame.K_0
+                    for cell in Cell.objects:
+                        if cell.selected:
+                            cell.sketch(number_input)
+                elif event.key == pygame.K_BACKSPACE:
+                    for cell in Cell.objects:
+                        if cell.selected:
+                            board.Board.clear(cell)
+        if restart_key == 1:
+            break
+        pygame.display.update()
+    if restart_key == 1:
+        continue
