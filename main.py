@@ -67,8 +67,7 @@ def start_screen():
                     return 40
                 elif right_button_rect.collidepoint(event.pos):
                     return 50
-                elif board.exitbutton.collidepoint(event.pos):
-                    sys.exit()
+
 
 difficulty = start_screen()
 

@@ -37,7 +37,6 @@ class Board:
       button_surface.blit(text, text_rect)
       board_surface.blit(button_surface, (button_x, button_y))
       screen.blit(board_surface, (0, 0))
-      pygame.display.update()
 
   def buttonrestart(self):
       button_width = Board.CELL_SIZE
@@ -53,7 +52,6 @@ class Board:
       button_surface.blit(text, text_rect)
       board_surface.blit(button_surface, (button_x, button_y))
       screen.blit(board_surface, (0, 0))
-      pygame.display.update()
 
   def buttonexit(self):
       button_width = Board.CELL_SIZE
@@ -69,7 +67,6 @@ class Board:
       button_surface.blit(text, text_rect)
       board_surface.blit(button_surface, (button_x, button_y))
       screen.blit(board_surface, (0, 0))
-      pygame.display.update()
 
 
   def draw(self):
@@ -80,6 +77,9 @@ class Board:
       screen.fill((191, 239, 255))
       board_surface.fill((202, 225, 255))
       pygame.display.flip()
+      Board.buttonexit(self)
+      Board.buttonreset(self)
+      Board.buttonrestart(self)
       font = pygame.font.Font(None, 20)
       for row in range(9):
           for col in range(9):
@@ -91,9 +91,7 @@ class Board:
               pygame.draw.line(board_surface, (96, 123, 139), (0, i * Board.CELL_SIZE), (WIDTH, i * Board.CELL_SIZE), 4)
               pygame.draw.line(board_surface, (96, 123, 139), (i * Board.CELL_SIZE, 0), (i * Board.CELL_SIZE, WIDTH), 4)
       screen.blit(board_surface, (0, 0))
-      buttonreset()
-      buttonexit()
-      buttonrestart()
+
   def select(self,row, col):
     self.selected_cell = (row, col)
 
