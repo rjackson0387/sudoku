@@ -1,3 +1,4 @@
+import pygame
 from constants import *
 import sudoku_generator
 import random
@@ -68,6 +69,7 @@ def start_screen():
                 elif right_button_rect.collidepoint(event.pos):
                     return 50
 
+
 difficulty = start_screen()
 
 
@@ -93,6 +95,14 @@ while True:
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             print(event.pos)
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_1 <= event.key <= pygame.K_9:
+                number_input = event.key - pygame.K_0
+                for i in Cell.objects:
+                    if i.selected:
+                        i.sketch(number_input)
+
+
 
     pygame.display.update()
 
