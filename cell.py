@@ -15,6 +15,7 @@ class Cell:
     self.screen = screen
     self.selected = False
     Cell.objects.append(self)
+    self.cell = pygame.Rect(self.row * self.width, self.col * self.height, self.width, self.height)
 
 
 
@@ -63,3 +64,7 @@ class Cell:
       chip_9_rect = chip_9_surf.get_rect(center=(self.width // 2 + self.width * self.col,self.height // 2 + self.height * self.row))
       screen.blit(chip_9_surf, chip_9_rect)
   
+def red_box(x,y):
+  for item in Cell.objects:
+    if item.cell.collidepoint((x,y)):
+      pygame.draw.rect(item.screen, pygame.Color("red"), item.cell, width=3 )

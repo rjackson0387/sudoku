@@ -1,3 +1,4 @@
+import cell
 from constants import *
 import sudoku_generator
 import random
@@ -68,6 +69,10 @@ def start_screen():
                 elif right_button_rect.collidepoint(event.pos):
                     return 50
 
+
+
+
+
 difficulty = start_screen()
 
 
@@ -92,8 +97,8 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            print(event.pos)
-
+            x,y = event.pos
+            cell.red_box(x,y)
     pygame.display.update()
 
 
