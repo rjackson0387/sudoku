@@ -6,7 +6,7 @@ from sudoku_generator import SudokuGenerator
 
 pygame.init()
 pygame.display.set_caption('Sudoku')
-screen = pygame.display.set_mode((WIDTH, HEIGHT))   # (453, 453) makes it around the actual parts of the board
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 board_surface = pygame.Surface((WIDTH, HEIGHT))
 screen.fill((191, 239, 255))
 board_surface.fill((202, 225, 255))
@@ -23,6 +23,14 @@ class Board:
 
 
   def draw(self):
+      pygame.init()
+      pygame.display.set_caption('Sudoku')
+      screen = pygame.display.set_mode((WIDTH, HEIGHT))
+      board_surface = pygame.Surface((WIDTH, HEIGHT))
+      screen.fill((191, 239, 255))
+      board_surface.fill((202, 225, 255))
+      pygame.display.flip()
+      font = pygame.font.Font(None, 20)
       for row in range(9):
           for col in range(9):
               x = col * Board.CELL_SIZE
