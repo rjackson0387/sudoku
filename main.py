@@ -8,13 +8,6 @@ import sys
 from cell import Cell
 pygame.init()
 
-def exitbutton(mouse_pos):
-    button_rect = pygame.Rect(350,470,50,25)
-    if button_rect.collidepoint(mouse_pos):
-        pygame.quit()
-        sys.exit()
-
-
 def start_screen():
     pygame.init()
     pygame.display.set_caption('Sudoku')
@@ -71,6 +64,18 @@ def start_screen():
                     return 40
                 elif right_button_rect.collidepoint(event.pos):
                     return 50
+def exitbutton(mouse_pos):
+    button_rect = pygame.Rect(350,470,50,25)
+    if button_rect.collidepoint(mouse_pos):
+        pygame.quit()
+        sys.exit()
+
+def restartbutton(mouse_pos):
+    button_rect = pygame.Rect(200,470,50,25)
+    if button_rect.collidepoint(mouse_pos):
+        start_screen()
+
+
 
 
 
@@ -102,6 +107,8 @@ while True:
             cell.red_box(x,y)
             mouse_pos = pygame.mouse.get_pos()
             exitbutton(mouse_pos)
+            restartbutton(mouse_pos)
+
     pygame.display.update()
 
 
