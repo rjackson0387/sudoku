@@ -23,6 +23,11 @@ def restartbutton(coords):
         return True
     return False
 
+def resetbutton(coords):
+    button_rect = pygame.Rect(50, 475, 50, 25)
+    if button_rect.collidepoint(coords):
+        return True
+    return False
 
 def start_screen():
     pygame.init()
@@ -84,6 +89,7 @@ def start_screen():
 while True: #New while loop
     difficulty = start_screen()
     restart_key = 0
+    restart = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
     game_board = sudoku_generator.generate_sudoku(9, difficulty)
     #game_board = board.Board.draw(1)
 
@@ -110,6 +116,7 @@ while True: #New while loop
                     pygame.quit()
                     sys.exit()
                 if restartbutton(coords):
+                    sudoku.draw()
                     start_screen()
                     restart_key = 1
                     break
@@ -117,6 +124,17 @@ while True: #New while loop
                 cell.red_box(*coords)
                 if selected_cell:
                     board.Board.select(sudoku, *selected_cell)
+                if resetbutton(coords):
+                    sudoku.draw()
+                    for row, list in enumerate(game_board):
+                        for col, item in enumerate(list):
+                            Cell(item, row, col, 50, 50, board.screen)
+
+                    sudoku = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
+                    sudoku.draw()
+
+                    for item in Cell.objects:
+                        item.draw(item.screen)
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1 or event.key == pygame.K_9 or event.key == pygame.K_2 or event.key == pygame.K_3 \
                         or event.key == pygame.K_4 or event.key == pygame.K_5 or event.key == pygame.K_6 or event.key == pygame.K_7 \
