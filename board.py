@@ -10,7 +10,7 @@ board_surface = pygame.Surface((WIDTH, HEIGHT))
 screen.fill((191, 239, 255))
 board_surface.fill((202, 225, 255))
 pygame.display.flip()
-
+font = pygame.font.Font(None, 20)
 
 class Board:
   CELL_SIZE = 50
@@ -19,6 +19,7 @@ class Board:
     self.height = height
     self.screen = screen
     self.difficulty = difficulty
+
 
   def draw(self):
       for row in range(9):
@@ -31,16 +32,47 @@ class Board:
               pygame.draw.line(board_surface, (96, 123, 139), (0, i * Board.CELL_SIZE), (WIDTH, i * Board.CELL_SIZE), 4)
               pygame.draw.line(board_surface, (96, 123, 139), (i * Board.CELL_SIZE, 0), (i * Board.CELL_SIZE, WIDTH), 4)
       screen.blit(board_surface, (0, 0))
-      left_button_rect = pygame.Rect(200, 500, 120, 70)
-      middle_button_rect = pygame.Rect(400, 500, 120, 70)
-      right_button_rect = pygame.Rect(600, 500, 120, 70)
 
-      font = pygame.font.Font(None, 36)
-      left_text = font.render('BABY', True, (0, 0, 0))
-      middle_text = font.render('MEDIUM', True, (0, 0, 0))
-      right_text = font.render('HARD', True, (0, 0, 0))
+      button_width = Board.CELL_SIZE
+      button_height = Board.CELL_SIZE // 2
+      spacing = 10
 
+
+      button_x = 50
+      button_y = HEIGHT - spacing - button_height
+      button_surface = pygame.Surface((button_width, button_height))
+      pygame.draw.rect(button_surface, (255,240,245), (0, 0, button_width, button_height))
+      pygame.draw.rect(button_surface, (171,130,255), (0, 0, button_width, button_height), 2)
+      text = font.render("Reset", True, (39,64,139))
+      text_rect = text.get_rect(center=(button_width // 2, button_height // 2))
+      button_surface.blit(text, text_rect)
+      board_surface.blit(button_surface, (button_x, button_y))
+
+
+
+      button_x = 200
+      button_surface = pygame.Surface((button_width, button_height))
+      pygame.draw.rect(button_surface, (255, 240, 245), (0, 0, button_width, button_height))
+      pygame.draw.rect(button_surface, (171, 130, 255), (0, 0, button_width, button_height), 2)
+      text = font.render("Restart", True, (39, 64, 139))
+      text_rect = text.get_rect(center=(button_width // 2, button_height // 2))
+      button_surface.blit(text, text_rect)
+      board_surface.blit(button_surface, (button_x, button_y))
+
+
+      button_x = 350
+      button_surface = pygame.Surface((button_width, button_height))
+      pygame.draw.rect(button_surface, (255, 240, 245), (0, 0, button_width, button_height))
+      pygame.draw.rect(button_surface, (171, 130, 255), (0, 0, button_width, button_height), 2)
+      text = font.render("Exit", True, (39, 64, 139))
+      text_rect = text.get_rect(center=(button_width // 2, button_height // 2))
+      button_surface.blit(text, text_rect)
+      board_surface.blit(button_surface, (button_x, button_y))
+
+
+      screen.blit(board_surface, (0, 0))
       pygame.display.update()
+
 
 
 
