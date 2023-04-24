@@ -70,14 +70,10 @@ def start_screen():
 
 difficulty = start_screen()
 
-
 #game = sudoku_generator.generate_sudoku(9, difficulty)
 
 sudoku = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
 sudoku.draw()
-
-
-
 
 while True:
     for event in pygame.event.get():
