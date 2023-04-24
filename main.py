@@ -4,6 +4,7 @@ import random
 import board
 import pygame
 import sys
+from board import button_dict
 
 pygame.init()
 
@@ -67,10 +68,44 @@ def start_screen():
                     return 40
                 elif right_button_rect.collidepoint(event.pos):
                     return 50
+def resetbutton():
+    board.screen.blit(board.board_surface, (0, 0))
+    button_width = board.Board.CELL_SIZE
+    button_height = board.Board.CELL_SIZE // 2
+    spacing = 10
+    button_a = 50
+    button_y = 500 - spacing - button_height
+    button_surface = pygame.Surface((button_width, button_height))
+    pygame.draw.rect(button_surface, (255, 240, 245), (0, 0, button_width, button_height))
+    pygame.draw.rect(button_surface, (171, 130, 255), (0, 0, button_width, button_height), 2)
+    text = board.font.render("Reset", True, (39, 64, 139))
+    text_rect = text.get_rect(center=(button_width // 2, button_height // 2))
+    button_surface.blit(text, text_rect)
+    board.board_surface.blit(button_surface, (button_a, button_y))
+    board.screen.blit(board.board_surface, (0, 0))
+def restartbutton():
+    board.screen.blit(board.board_surface, (0, 0))
+    button_width = board.Board.CELL_SIZE
+    button_height = board.Board.CELL_SIZE // 2
+    spacing = 10
+    button_b = 200
+    button_y = 500 - spacing - button_height
+    button_surface = pygame.Surface((button_width, button_height))
+    pygame.draw.rect(button_surface, (255, 240, 245), (0, 0, button_width, button_height))
+    pygame.draw.rect(button_surface, (171, 130, 255), (0, 0, button_width, button_height), 2)
+    text = board.font.render("Reset", True, (39, 64, 139))
+    text_rect = text.get_rect(center=(button_width // 2, button_height // 2))
+    button_surface.blit(text, text_rect)
+    board.board_surface.blit(button_surface, (button_b, button_y))
+    board.screen.blit(board.board_surface, (0, 0))
+def exitbutton(mouse_pos):
+    button_rect = pygame.Rect(350, 475, 50, 25)
+    if button_rect.collidepoint(mouse_pos):
+        pygame.quit()
+        sys.exit()
 
 
 difficulty = start_screen()
-
 game = sudoku_generator.generate_sudoku(9, difficulty)
 
 sudoku = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
@@ -82,7 +117,8 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            print(event.pos)
+            mouse_pos = pygame.mouse.get_pos()
+            exitbutton(mouse_pos)
 
     pygame.display.update()
 
