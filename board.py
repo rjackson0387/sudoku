@@ -2,6 +2,7 @@ from cell import Cell
 import pygame
 from constants import *
 import sys
+from sudoku_generator import SudokuGenerator
 
 pygame.init()
 pygame.display.set_caption('Sudoku')
@@ -81,17 +82,27 @@ class Board:
       screen.blit(board_surface, (0, 0))
       pygame.display.update()
 
-
-
-
-
-
   def select(self,row, col):
-    pass
+    self.selected_cell = (row, col)
+
+
   def click(self, x, y):
-    pass
+    cell_width = self.width // 9
+    cell_height = self.height // 9
+    row = y // cell_height
+    col = x // cell_width
+
+    if 0 <= col < 9 and 0 <= row < 9:
+        return (row, col)
+    else:
+        return None
+
+
   def sketch(self, value):
-    pass
+
+
+
+
   def place_number(self, value):
     pass
   def reset_to_original(self):
