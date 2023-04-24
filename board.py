@@ -20,6 +20,7 @@ class Board:
     self.height = height
     self.screen = screen
     self.difficulty = difficulty
+    self.selected_cell = None
 
 
   def draw(self):
@@ -98,8 +99,15 @@ class Board:
         return None
 
 
-  def sketch(self, value):
+  def clear(self):
+    if self.selected_cell is True:
+        i = None
 
+
+
+
+  def sketch(self, value):
+    pass
 
 
 
