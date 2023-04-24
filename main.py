@@ -99,6 +99,7 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             x,y = event.pos
             cell.red_box(x,y)
+
     pygame.display.update()
 
 
