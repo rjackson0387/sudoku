@@ -81,7 +81,7 @@ def start_screen():
                 elif right_button_rect.collidepoint(event.pos):
                     return 50
 
-while True:
+while True: #New while loop
     difficulty = start_screen()
     restart_key = 0
     game_board = sudoku_generator.generate_sudoku(9, difficulty)
@@ -126,8 +126,9 @@ while True:
                     for cell in Cell.objects:
                         if cell.selected:
                             board.Board.clear(cell)
+        pygame.display.update()
         if restart_key == 1:
             break
-        pygame.display.update()
+    pygame.display.update()
     if restart_key == 1:
         continue
