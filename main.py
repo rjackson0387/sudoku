@@ -115,11 +115,11 @@ while True:
             if selected_cell:
                 board.Board.select(sudoku, *selected_cell)
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_1 <= event.key <= pygame.K_9:
+            if event.key == pygame.K_1 or event.key == pygame.K_9 or event.key == pygame.K_2 or event.key == pygame.K_3\
+                    or event.key == pygame.K_4 or event.key == pygame.K_5 or event.key == pygame.K_6 or event.key == pygame.K_7\
+                    or event.key == pygame.K_8:
                 number_input = event.key - pygame.K_0
-                for cell in Cell.objects:
-                    if cell.selected:
-                        cell.sketch(number_input)
+                sudoku.sketch(number_input, *coords)
             elif event.key == pygame.K_BACKSPACE:
                 for cell in Cell.objects:
                     if cell.selected:

@@ -110,12 +110,15 @@ class Board:
 
 
 
-  def sketch(self, value):
+  def sketch(self, value, x, y):
+      sketch_font = pygame.font.Font(None, 10)
+      row, col = self.click(x, y)
       for cell in Cell.objects:
-          if cell == self.selected_cell and cell.value == 0:
-              cell.sketches.add(value)
-
-
+          if cell.cell.collidepoint(x, y) and cell.value == 0:
+            cell.set_sketched_value(value)
+            sketch_surface = sketch_font.render(str(value), True, (115,115,115))
+            sketch_rect = sketch_surface.get_rect(center =((50 * col) + 10, (50 * row) + 10))
+            self.screen.blit(sketch_surface, sketch_rect)
 
 
 
