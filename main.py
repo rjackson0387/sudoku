@@ -6,10 +6,20 @@ import board
 import pygame
 import sys
 from cell import Cell
+
 pygame.init()
 
 
-
+def exitbutton(coords):
+    button_rect = pygame.Rect(350, 475, 50, 25)
+    if button_rect.collidepoint(coords):
+        pygame.quit()
+        sys.exit()
+def restartbutton(coords):
+    button_rect = pygame.Rect(200, 475, 50, 25)
+    if button_rect.collidepoint(coords):
+        return True
+    return False
 
 
 def start_screen():
@@ -69,9 +79,7 @@ def start_screen():
                 elif right_button_rect.collidepoint(event.pos):
                     return 50
 
-
 difficulty = start_screen()
-
 
 game_board = sudoku_generator.generate_sudoku(9, difficulty)
 
@@ -79,14 +87,11 @@ for row, list in enumerate(game_board):
     for col, item in enumerate(list):
         Cell(item, row, col, 50, 50, board.screen)
 
-
 sudoku = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
 sudoku.draw()
 
 for item in Cell.objects:
     item.draw(item.screen)
-
-
 
 while True:
     for event in pygame.event.get():
@@ -96,6 +101,12 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             print(event.pos)
             coords = pygame.mouse.get_pos()
+            if exitbutton(coords):
+                pygame.quit()
+                sys.exit()
+            if restartbutton(coords):
+                start_screen()
+                break
             selected_cell = board.Board.click(sudoku, *coords)
             if selected_cell:
                 board.Board.select(sudoku, *selected_cell)
@@ -110,9 +121,4 @@ while True:
                     if cell.selected:
                         board.Board.clear(cell)
 
-
-
     pygame.display.update()
-
-
-
