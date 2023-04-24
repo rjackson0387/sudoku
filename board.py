@@ -106,10 +106,9 @@ class Board:
 
 
   def sketch(self, value):
-      for i in self.selected_cell:
-          if i not in self.sketches:
-              self.sketches.add(value)
-              Cell.set_sketched_value(value)
+      for cell in self.selected_cell:
+          if cell in Cell.objects:
+              cell.sketches.add(value)
 
 
 
