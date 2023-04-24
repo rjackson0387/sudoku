@@ -20,62 +20,67 @@ class Board:
     self.height = height
     self.screen = screen
     self.difficulty = difficulty
+
+
   def draw(self):
-    pygame.init()
-    pygame.display.set_caption('Sudoku')
-    screen = pygame.display.set_mode((WIDTH, 500))
-    board_surface = pygame.Surface((WIDTH, 500))
-    screen.fill((191, 239, 255))
-    board_surface.fill((202, 225, 255))
-    pygame.display.flip()
-    font = pygame.font.Font(None, 20)
-    for row in range(9):
-        for col in range(9):
-            x = col * Board.CELL_SIZE
-            y = row * Board.CELL_SIZE
-            pygame.draw.rect(board_surface, (96, 123, 139), (x, y, Board.CELL_SIZE, Board.CELL_SIZE), 1)
-    for i in range(10):
-        if i % 3 == 0:
-            pygame.draw.line(board_surface, (96, 123, 139), (0, i * Board.CELL_SIZE), (WIDTH, i * Board.CELL_SIZE), 4)
-            pygame.draw.line(board_surface, (96, 123, 139), (i * Board.CELL_SIZE, 0), (i * Board.CELL_SIZE, WIDTH), 4)
-    screen.blit(board_surface, (0, 0))
-    button_width = Board.CELL_SIZE
-    button_height = Board.CELL_SIZE // 2
-    spacing = 10
+      pygame.init()
+      pygame.display.set_caption('Sudoku')
+      screen = pygame.display.set_mode((WIDTH, 500))
+      board_surface = pygame.Surface((WIDTH, 500))
+      screen.fill((191, 239, 255))
+      board_surface.fill((202, 225, 255))
+      pygame.display.flip()
+      font = pygame.font.Font(None, 20)
+      for row in range(9):
+          for col in range(9):
+              x = col * Board.CELL_SIZE
+              y = row * Board.CELL_SIZE
+              pygame.draw.rect(board_surface, (96,123,139), (x, y, Board.CELL_SIZE, Board.CELL_SIZE), 1)
+      for i in range(10):
+          if i % 3 == 0:
+              pygame.draw.line(board_surface, (96, 123, 139), (0, i * Board.CELL_SIZE), (WIDTH, i * Board.CELL_SIZE), 4)
+              pygame.draw.line(board_surface, (96, 123, 139), (i * Board.CELL_SIZE, 0), (i * Board.CELL_SIZE, WIDTH), 4)
+      screen.blit(board_surface, (0, 0))
 
-    button_a = 50
-    button_y = 500 - spacing - button_height
-    button_surface = pygame.Surface((button_width, button_height))
-    pygame.draw.rect(button_surface, (255, 240, 245), (0, 0, button_width, button_height))
-    pygame.draw.rect(button_surface, (171, 130, 255), (0, 0, button_width, button_height), 2)
-    text = font.render("Reset", True, (39, 64, 139))
-    text_rect = text.get_rect(center=(button_width // 2, button_height // 2))
-    button_surface.blit(text, text_rect)
-    board_surface.blit(button_surface, (button_a, button_y))
-    screen.blit(board_surface, (0, 0))
+      button_width = Board.CELL_SIZE
+      button_height = Board.CELL_SIZE // 2
+      spacing = 10
 
-    button_b = 200
-    button_y = 500 - spacing - button_height
-    button_surface = pygame.Surface((button_width, button_height))
-    pygame.draw.rect(button_surface, (255, 240, 245), (0, 0, button_width, button_height))
-    pygame.draw.rect(button_surface, (171, 130, 255), (0, 0, button_width, button_height), 2)
-    text = font.render("Restart", True, (39, 64, 139))
-    text_rect = text.get_rect(center=(button_width // 2, button_height // 2))
-    button_surface.blit(text, text_rect)
-    board_surface.blit(button_surface, (button_b, button_y))
-    screen.blit(board_surface, (0, 0))
 
-    button_c = 350
-    button_y = 500 - spacing - button_height
-    button_surface = pygame.Surface((button_width, button_height))
-    pygame.draw.rect(button_surface, (255, 240, 245), (0, 0, button_width, button_height))
-    pygame.draw.rect(button_surface, (171, 130, 255), (0, 0, button_width, button_height), 2)
-    text = font.render("Exit", True, (39, 64, 139))
-    text_rect = text.get_rect(center=(button_width // 2, button_height // 2))
-    button_surface.blit(text, text_rect)
-    board_surface.blit(button_surface, (button_c, button_y))
-    screen.blit(board_surface, (0, 0))
+      button_x = 50
+      button_y = 500 - spacing - button_height
+      button_surface = pygame.Surface((button_width, button_height))
+      pygame.draw.rect(button_surface, (255,240,245), (0, 0, button_width, button_height))
+      pygame.draw.rect(button_surface, (171,130,255), (0, 0, button_width, button_height), 2)
+      text = font.render("Reset", True, (39,64,139))
+      text_rect = text.get_rect(center=(button_width // 2, button_height // 2))
+      button_surface.blit(text, text_rect)
+      board_surface.blit(button_surface, (button_x, button_y))
 
+
+
+      button_x = 200
+      button_surface = pygame.Surface((button_width, button_height))
+      pygame.draw.rect(button_surface, (255, 240, 245), (0, 0, button_width, button_height))
+      pygame.draw.rect(button_surface, (171, 130, 255), (0, 0, button_width, button_height), 2)
+      text = font.render("Restart", True, (39, 64, 139))
+      text_rect = text.get_rect(center=(button_width // 2, button_height // 2))
+      button_surface.blit(text, text_rect)
+      board_surface.blit(button_surface, (button_x, button_y))
+
+
+      button_x = 350
+      button_surface = pygame.Surface((button_width, button_height))
+      pygame.draw.rect(button_surface, (255, 240, 245), (0, 0, button_width, button_height))
+      pygame.draw.rect(button_surface, (171, 130, 255), (0, 0, button_width, button_height), 2)
+      text = font.render("Exit", True, (39, 64, 139))
+      text_rect = text.get_rect(center=(button_width // 2, button_height // 2))
+      button_surface.blit(text, text_rect)
+      board_surface.blit(button_surface, (button_x, button_y))
+
+
+      screen.blit(board_surface, (0, 0))
+      pygame.display.update()
 
   def select(self,row, col):
     self.selected_cell = (row, col)
@@ -111,29 +116,3 @@ class Board:
     pass
   def check_board(self):
     pass
-
-screen.blit(board_surface, (0, 0))
-button_width = Board.CELL_SIZE
-button_height = Board.CELL_SIZE // 2
-spacing = 10
-
-button_dict = {
-        "button_a": {
-            "x": 50,
-            "y": 500 - spacing - button_height,
-            "text": "Reset"
-        },
-        "button_b": {
-            "x": 200,
-            "y": 500 - spacing - button_height,
-            "text": "Exit"
-        },
-        "button_c": {
-            "x": 350,
-            "y": 500 - spacing - button_height,
-            "text": "Exit"
-        }
-    }
-
-
-

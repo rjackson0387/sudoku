@@ -22,7 +22,7 @@ class Cell:
   def set_cell_value(self, value):
     self.value = value
     
-  def set_sketched_value(self,value):
+  def set_sketched_value(self, value):
     self.sketched_value = value
   
   def draw(self, screen):
@@ -63,8 +63,17 @@ class Cell:
     elif self.value == 10:
       chip_9_rect = chip_9_surf.get_rect(center=(self.width // 2 + self.width * self.col,self.height // 2 + self.height * self.row))
       screen.blit(chip_9_surf, chip_9_rect)
-  
+
+
+saved_cell = None
+
 def red_box(x,y):
+  global saved_cell
   for item in Cell.objects:
     if item.cell.collidepoint((x,y)):
-      pygame.draw.rect(item.screen, pygame.Color("red"), item.cell, width=3 )
+      pygame.draw.rect(item.screen, pygame.Color("red"), item.cell, width=1 )
+      if item.cell != saved_cell and saved_cell != None:
+        pygame.draw.rect(item.screen, pygame.Color((96,123,139)), saved_cell, width=1)
+      saved_cell = item.cell
+
+
