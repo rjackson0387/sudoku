@@ -1,4 +1,4 @@
-import cell
+import pygame
 from constants import *
 import sudoku_generator
 import random
@@ -70,9 +70,6 @@ def start_screen():
                     return 50
 
 
-
-
-
 difficulty = start_screen()
 
 
@@ -97,8 +94,24 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            x,y = event.pos
-            cell.red_box(x,y)
+            print(event.pos)
+            coords = pygame.mouse.get_pos()
+            selected_cell = board.Board.click(sudoku, *coords)
+            if selected_cell:
+                board.Board.select(sudoku, *selected_cell)
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_1 <= event.key <= pygame.K_9:
+                number_input = event.key - pygame.K_0
+                for cell in Cell.objects:
+                    if cell.selected:
+                        cell.sketch(number_input)
+            elif event.key == pygame.K_BACKSPACE:
+                for cell in Cell.objects:
+                    if cell.selected:
+                        board.Board.clear(cell)
+
+
+
     pygame.display.update()
 
 

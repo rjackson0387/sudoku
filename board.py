@@ -1,3 +1,4 @@
+import cell
 from cell import Cell
 import pygame
 from constants import *
@@ -85,6 +86,7 @@ class Board:
 
   def select(self,row, col):
     self.selected_cell = (row, col)
+    cell.red_box(row, col)
 
 
 
