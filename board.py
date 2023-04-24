@@ -87,6 +87,7 @@ class Board:
     self.selected_cell = (row, col)
 
 
+
   def click(self, x, y):
     cell_width = self.width // 9
     cell_height = self.height // 9
