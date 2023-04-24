@@ -25,8 +25,8 @@ class Board:
   def draw(self):
       pygame.init()
       pygame.display.set_caption('Sudoku')
-      screen = pygame.display.set_mode((WIDTH, HEIGHT))
-      board_surface = pygame.Surface((WIDTH, HEIGHT))
+      screen = pygame.display.set_mode((WIDTH, 500))
+      board_surface = pygame.Surface((WIDTH, 500))
       screen.fill((191, 239, 255))
       board_surface.fill((202, 225, 255))
       pygame.display.flip()
@@ -48,7 +48,7 @@ class Board:
 
 
       button_x = 50
-      button_y = HEIGHT - spacing - button_height
+      button_y = 500 - spacing - button_height
       button_surface = pygame.Surface((button_width, button_height))
       pygame.draw.rect(button_surface, (255,240,245), (0, 0, button_width, button_height))
       pygame.draw.rect(button_surface, (171,130,255), (0, 0, button_width, button_height), 2)
@@ -99,6 +99,7 @@ class Board:
 
 
   def sketch(self, value):
+      pass
 
 
 
