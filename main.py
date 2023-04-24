@@ -4,7 +4,7 @@ import random
 import board
 import pygame
 import sys
-
+from cell import Cell
 pygame.init()
 
 
@@ -71,11 +71,18 @@ def start_screen():
 difficulty = start_screen()
 
 
-#game = sudoku_generator.generate_sudoku(9, difficulty)
+game_board = sudoku_generator.generate_sudoku(9, difficulty)
+
+for row, list in enumerate(game_board):
+    for col, item in enumerate(list):
+        Cell(item, row, col, 50, 50, board.screen)
+
 
 sudoku = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
 sudoku.draw()
 
+for item in Cell.objects:
+    item.draw(item.screen)
 
 
 

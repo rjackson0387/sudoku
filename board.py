@@ -6,8 +6,8 @@ from sudoku_generator import SudokuGenerator
 
 pygame.init()
 pygame.display.set_caption('Sudoku')
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-board_surface = pygame.Surface((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((WIDTH, 500))
+board_surface = pygame.Surface((WIDTH, 500))
 screen.fill((191, 239, 255))
 board_surface.fill((202, 225, 255))
 pygame.display.flip()
