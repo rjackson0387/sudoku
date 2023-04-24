@@ -72,7 +72,6 @@ def start_screen():
 
 
 
-
 difficulty = start_screen()
 
 
