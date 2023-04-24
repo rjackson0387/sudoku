@@ -8,8 +8,11 @@ import sys
 from cell import Cell
 pygame.init()
 
-
-
+def exitbutton(mouse_pos):
+    button_rect = pygame.Rect(350,470,50,25)
+    if button_rect.collidepoint(mouse_pos):
+        pygame.quit()
+        sys.exit()
 
 
 def start_screen():
@@ -71,8 +74,6 @@ def start_screen():
 
 
 
-
-
 difficulty = start_screen()
 
 
@@ -99,6 +100,8 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             x,y = event.pos
             cell.red_box(x,y)
+            mouse_pos = pygame.mouse.get_pos()
+            exitbutton(mouse_pos)
     pygame.display.update()
 
 
