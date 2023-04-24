@@ -16,8 +16,8 @@ text_rect.center = (WIDTH // 2, HEIGHT // 2 - 70)
 screen.blit(text_surface, text_rect)
 
 
-middle_button_rect = pygame.Rect(180, 280, 100, 40)
-middle_text = font.render('MEDIUM', True, (0, 0, 0))
+middle_button_rect = pygame.Rect(180, 200, 100, 40)
+middle_text = font.render('EXIT', True, (0, 0, 0))
 
 
 #middle button
@@ -25,7 +25,7 @@ middle_text = font.render('MEDIUM', True, (0, 0, 0))
 pygame.draw.rect(screen, (248,248,255), (middle_button_rect))
 text_rect = middle_text.get_rect(center=middle_button_rect.center)
 screen.blit(middle_text, text_rect)
-
+pygame.display.update()
 
 run = True
 while run:
