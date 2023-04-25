@@ -91,7 +91,6 @@ while True: #New while loop
     restart_key = 0
     #restart = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
     game_board = sudoku_generator.generate_sudoku(9, difficulty)
-
     for row, list in enumerate(game_board):
         for col, item in enumerate(list):
             Cell(item, col, row, 50, 50, board.screen)
@@ -119,6 +118,7 @@ while True: #New while loop
                     start_screen()
                     restart_key = 1
                     item = []
+                    Cell.objects = []
                     break
                 selected_cell = board.Board.click(sudoku, *coords)
                 cell.red_box(*coords)
@@ -135,6 +135,7 @@ while True: #New while loop
 
                     for item in Cell.objects:
                         item.draw(item.screen)
+
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1 or event.key == pygame.K_9 or event.key == pygame.K_2 or event.key == pygame.K_3 \
                         or event.key == pygame.K_4 or event.key == pygame.K_5 or event.key == pygame.K_6 or event.key == pygame.K_7 \
