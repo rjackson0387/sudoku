@@ -137,7 +137,6 @@ while True: #New while loop
                         or event.key == pygame.K_8:
                     number_input = event.key - pygame.K_0
                     sudoku.sketch(number_input, *coords)
-                    sudoku.is_full()
                 elif event.key == pygame.K_BACKSPACE:
                     for cell in Cell.objects:
                         if cell.selected:
@@ -147,7 +146,11 @@ while True: #New while loop
                         if item.cell.collidepoint(*coords):
                             if item.sketched_value in [1,2,3,4,5,6,7,8,9]:
                                 sudoku.place_number(item, item.sketched_value, *coords, game_board)
-
+                if sudoku.is_full(game_board):
+                    if sudoku.check_board(game_board):
+                        print("W")
+                    else:
+                        print("L")
         pygame.display.update()
         if restart_key == 1:
             break
