@@ -125,11 +125,6 @@ while True: #New while loop
                 if selected_cell:
                     board.Board.select(sudoku, *selected_cell)
                 if resetbutton(coords):
-                    game_board = sudoku_generator.generate_sudoku(9, 81)
-                    for row, list in enumerate(game_board):
-                        for col, item in enumerate(list):
-                            Cell(item, row, col, 50, 50, board.screen)
-
                     sudoku = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
                     sudoku.draw()
 
