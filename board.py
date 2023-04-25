@@ -146,21 +146,8 @@ class Board:
     pass
   def check_board(self, game_board, game_board_orig):
     for item in game_board:
-        for num in game_board_orig:
-            if item != num:
-                break
-            else:
-                return False
-        '''for num in row:
-            for row2 in game_board_orig:
-                for num2 in row2:
-                    if num == num2:
-                        continue
-                    else: 
-                        return False'''
+        if item in game_board_orig:
+            continue
+        else:
+            return False
     return True
-
-    '''if game_board == game_board_orig:
-        return T
-    else:
-        return False'''
