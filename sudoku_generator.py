@@ -273,9 +273,9 @@ Return: list[list] (a 2D Python list to represent the board)
 def generate_sudoku(size, removed):
     sudoku = SudokuGenerator(size, removed)
     sudoku.fill_values()
-    board = sudoku.get_board()
-    print(board)
+    board_orig = sudoku.get_board()
+    print(board_orig)
     sudoku.remove_cells()
     board = sudoku.get_board()
     print(board)
-    return board
+    return board, board_orig
