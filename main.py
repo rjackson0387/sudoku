@@ -143,11 +143,10 @@ while True: #New while loop
                         if cell.selected:
                             board.Board.clear(cell)
                 elif event.key == pygame.K_RETURN:
-                    for cell in Cell.objects:
-                        if cell.cell.collidepoint(*coords):
-                            box = cell
-                            if cell.sketched_value in [1,2,3,4,5,6,7,8,9]:
-                                sudoku.place_number(box, cell.sketched_value, *coords, game_board)
+                    for item in Cell.objects:
+                        if item.cell.collidepoint(*coords):
+                            if item.sketched_value in [1,2,3,4,5,6,7,8,9]:
+                                sudoku.place_number(item, item.sketched_value, *coords, game_board)
 
         pygame.display.update()
         if restart_key == 1:
