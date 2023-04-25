@@ -94,7 +94,7 @@ while True: #New while loop
     #game_board = board.Board.draw(1)
     for row, list in enumerate(game_board):
         for col, item in enumerate(list):
-            Cell(item, row, col, 50, 50, board.screen)
+            Cell(item, col, row, 50, 50, board.screen)
 
     sudoku = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
     sudoku.draw()

@@ -111,14 +111,17 @@ class Board:
 
 
   def sketch(self, value, x, y):
-      sketch_font = pygame.font.Font(None, 10)
+      sketch_font = pygame.font.Font(None, 20)
       row, col = self.click(x, y)
       for cell in Cell.objects:
-          if cell.cell.collidepoint(x, y) and cell.value == 0:
-            cell.set_sketched_value(value)
-            sketch_surface = sketch_font.render(str(value), True, (115,115,115))
-            sketch_rect = sketch_surface.get_rect(center =((50 * col) + 10, (50 * row) + 10))
-            self.screen.blit(sketch_surface, sketch_rect)
+          if cell.cell.collidepoint(x, y):
+              print(cell.value)
+              if cell.value == 0:
+                print(cell.value)
+                cell.set_sketched_value(value)
+                sketch_surface = sketch_font.render(str(value), True, (115,115,115))
+                sketch_rect = sketch_surface.get_rect(center =((50 * col) + 10, (50 * row) + 10))
+                self.screen.blit(sketch_surface, sketch_rect)
 
 
 
