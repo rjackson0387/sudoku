@@ -137,6 +137,7 @@ while True: #New while loop
                         or event.key == pygame.K_8:
                     number_input = event.key - pygame.K_0
                     sudoku.sketch(number_input, *coords)
+                    sudoku.is_full()
                 elif event.key == pygame.K_BACKSPACE:
                     for cell in Cell.objects:
                         if cell.selected:
