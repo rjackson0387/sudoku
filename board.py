@@ -1,5 +1,4 @@
 import cell
-import sudoku_generator
 from cell import Cell
 import pygame
 from constants import *
@@ -135,9 +134,9 @@ class Board:
 
   def reset_to_original(self):
     pass
-  def is_full(self):
-    for cell in Cell.objects:
-        if cell.value == 0:
+  def is_full(self, game_board):
+    for item in game_board:
+        if 0 in item:
             return False
     return True
 
@@ -145,5 +144,6 @@ class Board:
     pass
   def find_empty(self):
     pass
-  def check_board(self):
-      sudoku_generator.generate_sudoku()
+  def check_board(self, game_board):
+    for item in game_board:
+        return item.is_valid()
