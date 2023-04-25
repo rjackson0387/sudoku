@@ -115,6 +115,12 @@ def gamelostscreen():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+def finalresetbutton(coords):
+    button_rect = pygame.Rect(180, 200, 100, 40)
+    if button_rect.collidepoint(coords):
+        return True
+    return False
+
 
 while True: #New while loop
     difficulty = start_screen()
@@ -144,6 +150,13 @@ while True: #New while loop
                     pygame.quit()
                     sys.exit()
                 if restartbutton(coords):
+                    sudoku.draw()
+                    start_screen()
+                    restart_key = 1
+                    item = []
+                    Cell.objects = []
+                    break
+                if finalresetbutton(coords):
                     sudoku.draw()
                     start_screen()
                     restart_key = 1
