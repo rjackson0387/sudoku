@@ -89,10 +89,9 @@ def start_screen():
 while True: #New while loop
     difficulty = start_screen()
     restart_key = 0
-    restart = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
+    #restart = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
     game_board = sudoku_generator.generate_sudoku(9, difficulty)
     #game_board = board.Board.draw(1)
-
     for row, list in enumerate(game_board):
         for col, item in enumerate(list):
             Cell(item, row, col, 50, 50, board.screen)
@@ -119,6 +118,7 @@ while True: #New while loop
                     sudoku.draw()
                     start_screen()
                     restart_key = 1
+                    item = []
                     break
                 selected_cell = board.Board.click(sudoku, *coords)
                 cell.red_box(*coords)
