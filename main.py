@@ -10,7 +10,7 @@ import sys
 from cell import Cell
 
 pygame.init()
-
+# This should work
 def exitbutton(coords):
     button_rect = pygame.Rect(350, 475, 50, 25)
     if button_rect.collidepoint(coords):

@@ -1,6 +1,6 @@
 import pygame
 from constants import *
-
+# This should work
 #main menu
 pygame.init()
 pygame.display.set_caption('Sudoku')

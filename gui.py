@@ -5,7 +5,7 @@ pygame.init()
 pygame.display.set_caption('Sudoku')
 screen = pygame.display.set_mode((900, 900))
 screen.fill(WHITE)
-
+#This should work
 def draw():
     for i in range(0, 9):
         if i ==2 or i == 5 or i == 7:

@@ -4,7 +4,7 @@ import pygame
 from constants import *
 import sys
 from sudoku_generator import SudokuGenerator
-
+# This should work
 pygame.init()
 pygame.display.set_caption('Sudoku')
 screen = pygame.display.set_mode((WIDTH, 500))
