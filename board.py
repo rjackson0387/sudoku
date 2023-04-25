@@ -123,6 +123,8 @@ class Board:
       for cell in Cell.objects:
           if cell.cell.collidepoint(x, y):
               if cell.value == 0:
+                cover_sketch = pygame.Rect((50 * col+3), (50 * row + 4), 20, 20)
+                pygame.draw.rect(screen, (202,225,225), cover_sketch)
                 cell.set_sketched_value(value)
                 sketch_surface = sketch_font.render(str(value), True, (115,115,115))
                 sketch_rect = sketch_surface.get_rect(center =((50 * col) + 10, (50 * row) + 10))
@@ -134,6 +136,9 @@ class Board:
   def place_number(self, cell, value, x, y, game_board):
     row, col = self.click(x,y)
     game_board[row][col] = value
+    cell.set_cell_value(value)
+    cover_sketch = pygame.Rect((50 * col + 3), (50*row+3), 20,20)
+    pygame.draw.rect(screen, (202,225,255), cover_sketch)
     sketch_font = pygame.font.Font(None, 40)
     sketch_surface = sketch_font.render(str(value), True, (0, 0, 0))
     sketch_rect = sketch_surface.get_rect(center=cell.cell.center)
@@ -151,13 +156,25 @@ class Board:
     pass
   def find_empty(self):
     pass
-  def check_board(self, game_board, board_orig):
-    for row in range(9):
-        for col in range(9):
-            if 0 in game_board:
-                return False
-            elif game_board[col] != board_orig[col]:
-                return False
-    return True
 
+  def check_board(self, game_board):
+      # Check rows
+      for row in game_board:
+          if len(set(row)) != 9:
+              return False
+
+      # Check columns
+      for col in range(9):
+          if len(set([game_board[row][col] for row in range(9)])) != 9:
+              return False
+
+      #Check 3x3 boxes
+      for row in range(0, 9, 3):
+          for col in range(0, 9, 3):
+              box = [game_board[i][j] for i in range(row, row + 3) for j in range(col, col + 3)]
+              if len(set(box)) != 9:
+                  return False
+
+      #If all checks pass, the game_board is valid
+      return True
 

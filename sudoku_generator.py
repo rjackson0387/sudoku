@@ -254,7 +254,6 @@ class SudokuGenerator:
             else:
                 continue
 
-
 '''
 DO NOT CHANGE
 Provided for students
@@ -273,9 +272,9 @@ Return: list[list] (a 2D Python list to represent the board)
 def generate_sudoku(size, removed):
     sudoku = SudokuGenerator(size, removed)
     sudoku.fill_values()
-    board_orig = sudoku.get_board()
-    print(board_orig)
+    board = sudoku.get_board()
+    print(board)
     sudoku.remove_cells()
     board = sudoku.get_board()
     print(board)
-    return board_orig, board
+    return board
