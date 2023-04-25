@@ -147,3 +147,4 @@ class Board:
   def check_board(self, game_board):
     for item in game_board:
         return item.is_valid()
+        pass
