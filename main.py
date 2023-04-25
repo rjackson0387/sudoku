@@ -11,7 +11,6 @@ from cell import Cell
 
 pygame.init()
 
-
 def exitbutton(coords):
     button_rect = pygame.Rect(350, 475, 50, 25)
     if button_rect.collidepoint(coords):
@@ -217,8 +216,7 @@ while True: #New while loop
                         gamewonscreen()
                     else:
                         gamelostscreen()
-                    '''print(sudoku.check_board(game_board, game_board_orig))
-                    gamelostscreen()'''
+
         pygame.display.update()
         if restart_key == 1:
             break
