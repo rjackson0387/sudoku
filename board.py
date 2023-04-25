@@ -116,6 +116,8 @@ class Board:
       for cell in Cell.objects:
           if cell.cell.collidepoint(x, y):
               if cell.value == 0:
+                cover_sketch = pygame.Rect((50 * col + 3), (50 * row + 3), 20, 20)
+                pygame.draw.rect(screen, (202, 225, 255), cover_sketch)
                 cell.set_sketched_value(value)
                 sketch_surface = sketch_font.render(str(value), True, (115,115,115))
                 sketch_rect = sketch_surface.get_rect(center =((50 * col) + 10, (50 * row) + 10))
@@ -127,6 +129,9 @@ class Board:
   def place_number(self, cell, value, x, y, game_board):
     row, col = self.click(x,y)
     game_board[row][col] = value
+    cell.set_cell_value(value)
+    cover_sketch = pygame.Rect((50 * col + 3), (50 * row + 3), 20, 20)
+    pygame.draw.rect(screen, (202, 225, 255), cover_sketch)
     sketch_font = pygame.font.Font(None, 40)
     sketch_surface = sketch_font.render(str(value), True, (0, 0, 0))
     sketch_rect = sketch_surface.get_rect(center=cell.cell.center)
@@ -144,10 +149,7 @@ class Board:
     pass
   def find_empty(self):
     pass
-  def check_board(self, game_board, game_board_orig):
-    for item in game_board:
-        if item in game_board_orig:
-            continue
-        else:
-            return False
-    return True
+  def check_board(self, game_board, sudoku):
+    for row, list in enumerate(game_board):
+        for col, item in enumerate(list):
+            return sudoku.is_valid(row, col, item)
