@@ -1,4 +1,5 @@
 import cell
+import sudoku_generator
 from cell import Cell
 import pygame
 from constants import *
@@ -145,4 +146,4 @@ class Board:
   def find_empty(self):
     pass
   def check_board(self):
-    pass
+      sudoku_generator.generate_sudoku()
