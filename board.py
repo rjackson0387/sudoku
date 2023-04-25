@@ -145,9 +145,9 @@ class Board:
   def find_empty(self):
     pass
   def check_board(self, game_board, game_board_orig):
-    for item in game_board:
-        if item in game_board_orig:
-            continue
-        else:
-            return False
-    return True
+    print(game_board)
+    print(game_board_orig)
+    if enumerate(game_board) == enumerate(game_board_orig):
+        return True
+    else:
+        return False
