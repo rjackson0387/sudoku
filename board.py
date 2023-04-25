@@ -131,7 +131,11 @@ class Board:
   def reset_to_original(self):
     pass
   def is_full(self):
-    pass
+    for cell in Cell.objects:
+        if cell.value == 0:
+            return False
+    return True
+
   def update_board(self):
     pass
   def find_empty(self):

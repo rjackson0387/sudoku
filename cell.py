@@ -14,8 +14,8 @@ class Cell:
     self.height = height
     self.screen = screen
     self.selected = False
-    Cell.objects.append(self)
     self.cell = pygame.Rect(self.row * self.width, self.col * self.height, self.width, self.height)
+    Cell.objects.append(self)
 
 
 
