@@ -104,9 +104,16 @@ class Board:
         return None
 
 
-  def clear(self):
-      if self.user_fill:
-          self.value = None
+  def clear(self, x, y):
+      sketched_value = Cell.set_sketched_value
+      for cell in Cell.objects:
+          if sketched_value != 0:
+                  cell.set_sketched_value(None)
+                  cell.draw(self.screen)
+                  pygame.display.update(cell.cell)
+
+
+
 
 
 
@@ -144,7 +151,13 @@ class Board:
     pass
   def find_empty(self):
     pass
-  def check_board(self, game_board):
-    for item in game_board:
-        return item.is_valid()
-        pass
+  def check_board(self, game_board, board_orig):
+    for row in range(9):
+        for col in range(9):
+            if 0 in game_board:
+                return False
+            elif game_board[col] != board_orig[col]:
+                return False
+    return True
+
+

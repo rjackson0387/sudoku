@@ -67,7 +67,7 @@ class Cell:
 
 saved_cell = None
 
-def red_box(x,y):
+def red_box(self, x,y):
   global saved_cell
   for item in Cell.objects:
     if item.cell.collidepoint((x,y)):
@@ -75,5 +75,7 @@ def red_box(x,y):
       if item.cell != saved_cell and saved_cell != None:
         pygame.draw.rect(item.screen, pygame.Color((96,123,139)), saved_cell, width=1)
       saved_cell = item.cell
+
+
 
 

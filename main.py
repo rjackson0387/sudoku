@@ -82,7 +82,7 @@ def start_screen():
                 if left_button_rect.collidepoint(event.pos):
                     return 30
                 elif middle_button_rect.collidepoint(event.pos):
-                    return 40
+                    return 1
                 elif right_button_rect.collidepoint(event.pos):
                     return 50
 
@@ -120,7 +120,7 @@ while True: #New while loop
     difficulty = start_screen()
     restart_key = 0
     #game_board is the list with 0s, game_board_orig is the original list with no cells removed (aka the answer)
-    game_board, game_board_orig = sudoku_generator.generate_sudoku(9, difficulty)
+    game_board_orig, game_board = sudoku_generator.generate_sudoku(9, difficulty)
     for row, list in enumerate(game_board):
         for col, item in enumerate(list):
             Cell(item, col, row, 50, 50, board.screen)
@@ -138,7 +138,6 @@ while True: #New while loop
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                print(event.pos)
                 coords = event.pos
                 if exitbutton(coords):
                     pygame.quit()
@@ -151,7 +150,7 @@ while True: #New while loop
                     Cell.objects = []
                     break
                 selected_cell = board.Board.click(sudoku, *coords)
-                cell.red_box(*coords)
+                cell.red_box(sudoku, *coords)
                 if selected_cell:
                     board.Board.select(sudoku, *selected_cell)
                 if resetbutton(coords):
@@ -168,15 +167,19 @@ while True: #New while loop
                     number_input = event.key - pygame.K_0
                     sudoku.sketch(number_input, *coords)
                 elif event.key == pygame.K_BACKSPACE:
-                    for cell in Cell.objects:
-                        if cell.selected:
-                            board.Board.clear(cell)
+                    sudoku.clear(*coords)
+
                 elif event.key == pygame.K_RETURN:
+                    print(game_board_orig)
+                    print(game_board)
+                    print(sudoku.check_board(game_board, game_board_orig))
                     for item in Cell.objects:
                         if item.cell.collidepoint(*coords):
                             if item.sketched_value in [1,2,3,4,5,6,7,8,9]:
                                 sudoku.place_number(item, item.sketched_value, *coords, game_board)
+
                 if sudoku.is_full(game_board):
+                    print(sudoku.check_board(game_board, game_board_orig))
                     gamelostscreen()
         pygame.display.update()
         if restart_key == 1:
