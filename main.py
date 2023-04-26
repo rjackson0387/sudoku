@@ -81,7 +81,7 @@ def start_screen():
                 if left_button_rect.collidepoint(event.pos):
                     return 30
                 elif middle_button_rect.collidepoint(event.pos):
-                    return 1
+                    return 40
                 elif right_button_rect.collidepoint(event.pos):
                     return 50
 
@@ -174,6 +174,7 @@ def main():
             for col, item in enumerate(list):
                 Cell(item, col, row, 50, 50, board.screen)
 
+
         sudoku = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
         sudoku.draw()
 
@@ -197,6 +198,7 @@ def main():
                         restart_key = 1
                         item = []
                         Cell.objects = []
+                        Cell.original_objects = []
                         break
                     selected_cell = board.Board.click(sudoku, *coords)
                     cell.red_box(sudoku, *coords)
@@ -206,7 +208,7 @@ def main():
                         sudoku = board.Board(WIDTH, HEIGHT, board.screen, difficulty)
                         sudoku.draw()
 
-                        for item in Cell.objects:
+                        for item in Cell.original_objects:
                             item.draw(item.screen)
 
                 elif event.type == pygame.KEYDOWN:
@@ -233,6 +235,7 @@ def main():
                         else:
                             restart_key = gamelostscreen()
                             Cell.objects = []
+                            Cell.original_objects = []
 
             pygame.display.update()
             if restart_key == 1:
