@@ -4,7 +4,7 @@ import pygame
 from constants import *
 import sys
 from sudoku_generator import SudokuGenerator
-# This should work
+
 pygame.init()
 pygame.display.set_caption('Sudoku')
 screen = pygame.display.set_mode((WIDTH, 500))
@@ -124,7 +124,7 @@ class Board:
           if cell.cell.collidepoint(x, y):
               if cell.value == 0:
                 cover_sketch = pygame.Rect((50 * col+3), (50 * row + 4), 20, 20)
-                pygame.draw.rect(screen, (202,225,225), cover_sketch)
+                pygame.draw.rect(screen, (202,225,255), cover_sketch)
                 cell.set_sketched_value(value)
                 sketch_surface = sketch_font.render(str(value), True, (115,115,115))
                 sketch_rect = sketch_surface.get_rect(center =((50 * col) + 10, (50 * row) + 10))
@@ -177,4 +177,3 @@ class Board:
 
       #If all checks pass, the game_board is valid
       return True
-
