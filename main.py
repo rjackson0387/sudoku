@@ -81,7 +81,7 @@ def start_screen():
                 if left_button_rect.collidepoint(event.pos):
                     return 30
                 elif middle_button_rect.collidepoint(event.pos):
-                    return 1
+                    return 40
                 elif right_button_rect.collidepoint(event.pos):
                     return 50
 
