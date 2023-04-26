@@ -114,6 +114,14 @@ def gamelostscreen():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if middle_button_rect.collidepoint(event.pos):
+                    if middle_button_rect.collidepoint(180, 200) is True:
+                        start_screen()
+
+
+
+
 
 def gamewonscreen():
     pygame.init()
@@ -132,12 +140,17 @@ def gamewonscreen():
     middle_button_rect = pygame.Rect(180, 200, 100, 40)
     middle_text = font.render('EXIT', True, (0, 0, 0))
 
+
     # middle button
 
     pygame.draw.rect(screen, (248, 248, 255), (middle_button_rect))
     text_rect = middle_text.get_rect(center=middle_button_rect.center)
     screen.blit(middle_text, text_rect)
     pygame.display.update()
+
+
+
+
 
     run = True
     while run:
@@ -146,6 +159,9 @@ def gamewonscreen():
                 run = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if middle_button_rect.collidepoint(event.pos):
+                    if middle_button_rect.collidepoint(180, 200) is True:
+                        pygame.quit()
+                        sys.exit()
                     start_screen()
 
 
