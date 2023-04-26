@@ -169,7 +169,7 @@ def main():
         difficulty = start_screen()
         restart_key = 0
         #game_board is the list with 0s, game_board_orig is the original list with no cells removed (aka the answer)
-        game_board = sudoku_generator.generate_sudoku(9, 2)
+        game_board = sudoku_generator.generate_sudoku(9, difficulty)
         for row, list in enumerate(game_board):
             for col, item in enumerate(list):
                 Cell(item, col, row, 50, 50, board.screen)
